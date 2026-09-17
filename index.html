@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Oréal | Alokasyon & On-Top Operasyonel Analizi</title>
+    <style>
+        :root {
+            --primary: #2649B2;
+            --primary-light: #4A74F3;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --bg-page: #eef2f6;
+            --text-main: #1e293b;
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg-page); margin: 0; padding: 30px; color: var(--text-main); }
+        .dashboard { max-width: 1400px; margin: auto; background: white; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* Executive Header Banner */
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 25px 30px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(38,73,178,0.3); }
+        .header h3 { margin: 0; font-size: 26px; font-weight: 700; }
+        .header .subtitle { opacity: 0.85; font-size: 14px; margin-top: 5px; }
+        .header-badge { background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; backdrop-filter: blur(5px); }
+
+        /* KPI Cards */
+        .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 35px; }
+        .kpi-card { background: #f8fafc; padding: 22px; border-radius: 12px; border: 1px solid #e2e8f0; position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--primary); }
+        .kpi-card.success::before { background: var(--success); }
+        .kpi-card.danger::before { background: var(--danger); }
+        .kpi-card.warning::before { background: var(--warning); }
+        
+        .kpi-title { font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .kpi-value { font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
+        .kpi-desc { font-size: 12px; color: #64748b; }
+
+        /* Section Header */
+        .section-title { font-size: 18px; color: var(--text-main); font-weight: 700; margin: 35px 0 20px 0; display: flex; align-items: center; gap: 10px; border-left: 4px solid var(--primary); padding-left: 12px; }
+
+        /* Month Cards Grid */
+        .months-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .month-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: transform 0.2s; }
+        .month-card:hover { transform: translateY(-3px); }
+        
+        .month-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
+        .month-name { font-size: 20px; font-weight: 800; color: var(--primary); }
+        .total-sku { font-size: 12px; background: #e0e7ff; padding: 4px 12px; border-radius: 20px; color: var(--primary); font-weight: 700; }
+
+        /* Metrics */
+        .metric-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 15px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+        .metric-box span { color: #64748b; font-weight: 600; }
+        .metric-box strong { color: var(--text-main); }
+        
+        .manual-badge { background: #fff1f2; border: 1px dashed var(--danger); padding: 12px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+        .manual-badge span { font-size: 13px; color: #991b1b; font-weight: 600; }
+        .manual-badge strong { color: var(--danger); font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <!-- Renkli Executive Header -->
+    <div class="header">
+        <div>
+            <h3>Alokasyon Accuracy &  On-Top Analizi</h3>
+            <div class="subtitle">L'Oréal Supply Chain | Dönemsel Performans ve EAN Dağılımı</div>
+        </div>
+        <div class="header-badge">
+            Metodoloji: Net Accuracy & Pivot Oranları
+        </div>
+    </div>
+
+    <!-- KPI Özet Kartları -->
+    <div class="kpi-grid">
+        <div class="kpi-card success">
+            <div class="kpi-title">Mayıs Accuracy</div>
+            <div class="kpi-value">%93</div>
+            <div class="kpi-desc">Toplam EAN: <b>120</b></div>
+        </div>
+        <div class="kpi-card danger">
+            <div class="kpi-title">Haziran Accuracy</div>
+            <div class="kpi-value">%0</div>
+            <div class="kpi-desc">Toplam EAN: <b>121</b></div>
+        </div>
+        <div class="kpi-card warning">
+            <div class="kpi-title">Ağustos Accuracy</div>
+            <div class="kpi-value">%23</div>
+            <div class="kpi-desc">Toplam EAN: <b>76</b></div>
+        </div>
+    </div>
+
+    <div class="section-title">
+        Aylık EAN Segmentasyonu ve On-Top Oranları (Pivot Yüzdelikleri)
+    </div>
+
+    <!-- Aylık Detay Kartları -->
+    <div class="months-grid">
+        
+        <!-- MAYIS -->
+        <div class="month-card" style="border-top: 5px solid var(--success);">
+            <div class="month-header">
+                <span class="month-name">MAYIS</span>
+                <span class="total-sku">Toplam EAN: 120</span>
+            </div>
+            
+            <div class="metric-box">
+                <span>100%</span>
+                <strong>%38</strong>
+            </div>
+            <div class="metric-box">
+                <span>%30 - %100 Aralığı</span>
+                <strong>%36</strong>
+            </div>
+            <div class="metric-box">
+                <span>&lt; %30 (Düşük)</span>
+                <strong>%7</strong>
+            </div>
+            <div class="metric-box" style="background: #f0fdf4; border-color: #bbf7d0;">
+                <span>Net Accuracy Oranı</span>
+                <strong style="color: var(--success);">%93</strong>
+            </div>
+
+            <div class="manual-badge" style="background: #f0fdf4; border-color: var(--success);">
+                <span style="color: #166534;">On-Top Verilmiş </span>
+                <strong style="color: var(--success);">%18</strong>
+            </div>
+        </div>
+
+        <!-- HAZİRAN -->
+        <div class="month-card" style="border-top: 5px solid var(--danger);">
+            <div class="month-header">
+                <span class="month-name">HAZİRAN</span>
+                <span class="total-sku">Toplam EAN: 121</span>
+            </div>
+            
+            <div class="metric-box">
+                <span>100%</span>
+                <strong>%9</strong>
+            </div>
+            <div class="metric-box">
+                <span>%30 - %100 Aralığı</span>
+                <strong>%42</strong>
+            </div>
+            <div class="metric-box">
+                <span>&lt; %30 (Düşük)</span>
+                <strong>%27</strong>
+            </div>
+            <div class="metric-box" style="background: #fef2f2; border-color: #fecaca;">
+                <span>Net Accuracy Oranı</span>
+                <strong style="color: var(--danger);">%0</strong>
+            </div>
+
+            <div class="manual-badge">
+                <span>On-Top Verilmiş </span>
+                <strong>%22</strong>
+            </div>
+        </div>
+
+        <!-- AĞUSTOS -->
+        <div class="month-card" style="border-top: 5px solid var(--warning);">
+            <div class="month-header">
+                <span class="month-name">AĞUSTOS</span>
+                <span class="total-sku">Toplam EAN: 76</span>
+            </div>
+            
+            <div class="metric-box">
+                <span>100%</span>
+                <strong>%20</strong>
+            </div>
+            <div class="metric-box">
+                <span>%30 - %100 Aralığı</span>
+                <strong>%44</strong>
+            </div>
+            <div class="metric-box">
+                <span>&lt; %30 (Düşük)</span>
+                <strong>%29</strong>
+            </div>
+            <div class="metric-box" style="background: #fffbeb; border-color: #fef08a;">
+                <span>Net Accuracy Oranı</span>
+                <strong style="color: var(--warning);">%23</strong>
+            </div>
+
+            <div class="manual-badge" style="background: #fffbeb; border-color: var(--warning);">
+                <span style="color: #854d0e;">On-Top Verilmiş </span>
+                <strong style="color: var(--warning);">%8</strong>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
